@@ -33,8 +33,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: 15,
-        paddingVertical: 12,
+        paddingVertical: 5,
         borderBottomWidth: 1,
         borderBottomColor: '#262626',
         backgroundColor: 'black',
@@ -52,5 +51,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         columnGap: 15,
+        paddingRight: 10,
     },
 });
