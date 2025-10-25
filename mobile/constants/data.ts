@@ -28,8 +28,6 @@ export const stories = [
         profilePicture: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=700',
     },
 ];
-
-
 export const posts = [
     {
         name: 'Alice',
@@ -75,5 +73,37 @@ export const posts = [
         likes: 20,
         time: '22 jun',
 
+    },
+];
+export const people = [
+    {
+        name: 'Alice',
+        picture: require('../assets/pictures/photo1.jpg'),
+        joined_in: '2023-01-15',
+    },
+    {
+        name: 'Bob',
+        picture: require('../assets/pictures/photo2.jpg'),
+        joined_in: '2023-03-22',
+    },
+    {
+        name: 'Charlie',
+        picture: require('../assets/pictures/photo3.jpg'),
+        joined_in: '2023-05-10',
+    },
+    {
+        name: 'Diana',
+        picture: require('../assets/pictures/photo4.jpg'),
+        joined_in: '2023-07-05',
+    },
+    {
+        name: 'Ethan',
+        picture: require('../assets/pictures/photo5.jpg'),
+        joined_in: '2023-09-18',
+    },
+    {
+        name: 'Fiona',
+        picture: require('../assets/pictures/photo6.jpg'),
+        joined_in: '2023-11-30',
     },
 ];
