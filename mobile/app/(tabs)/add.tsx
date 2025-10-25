@@ -1,4 +1,16 @@
-import { View, StyleSheet, Text, TouchableOpacity, TextInput, Alert } from 'react-native';
+import {
+    View,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    TextInput,
+    Alert,
+    KeyboardAvoidingView,
+    Platform,
+    TouchableWithoutFeedback,
+    Keyboard,
+    ScrollView
+} from 'react-native';
 import React, { useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 const AddScreen = () => {
@@ -21,68 +33,103 @@ const AddScreen = () => {
         }
         Alert.alert('Success', `Picture uploaded with description: ${description}`);
         setDescription('');
+        Keyboard.dismiss();
+    };
+    const handleSubmitEditing = () => {
+        if (description.trim()) {
+            handleSubmit();
+        } else {
+            Keyboard.dismiss();
+        }
     };
     return (
-        <View style={styles.containerAdd}>
-            <TouchableOpacity
-                style={[
-                    styles.buttonStyle,
-                    isButtonFocused && styles.buttonFocused
-                ]}
-                onPress={handleButtonPress}
-                onPressIn={handleButtonPressIn}
-                onPressOut={handleButtonPressOut}
-                activeOpacity={0.7}
-            >
-                <MaterialCommunityIcons
-                    name='image-plus'
-                    size={30}
-                    color={isButtonFocused ? '#5e47de' : 'white'}
-                />
-                <Text style={[
-                    styles.textStyle,
-                    isButtonFocused && styles.textFocused
-                ]}>
-                    Upload Picture Or Video
-                </Text>
-            </TouchableOpacity>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    style={[
-                        styles.descriptionInput,
-                        isDescriptionFocused && styles.descriptionInputFocused
-                    ]}
-                    placeholder="Add description..."
-                    placeholderTextColor="#666"
-                    value={description}
-                    onChangeText={setDescription}
-                    onFocus={() => setIsDescriptionFocused(true)}
-                    onBlur={() => setIsDescriptionFocused(false)}
-                    multiline
-                    numberOfLines={3}
-                    textAlignVertical="top"
-                />
-                <Text style={styles.charCount}>
-                    {description.length}/200
-                </Text>
-            </View>
-            <TouchableOpacity
-                style={[
-                    styles.submitButton,
-                    (!description.trim()) && styles.submitButtonDisabled
-                ]}
-                onPress={handleSubmit}
-                disabled={!description.trim()}
-            >
-                <Text style={styles.submitButtonText}>
-                    Upload Post
-                </Text>
-            </TouchableOpacity>
-        </View>
+        <KeyboardAvoidingView
+            style={styles.container}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 10 : 0}
+        >
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <ScrollView
+                    contentContainerStyle={styles.scrollContainer}
+                    showsVerticalScrollIndicator={false}
+                    keyboardShouldPersistTaps="handled"
+                >
+                    <View style={styles.containerAdd}>
+                        <TouchableOpacity
+                            style={[
+                                styles.buttonStyle,
+                                isButtonFocused && styles.buttonFocused
+                            ]}
+                            onPress={handleButtonPress}
+                            onPressIn={handleButtonPressIn}
+                            onPressOut={handleButtonPressOut}
+                            activeOpacity={0.7}
+                        >
+                            <MaterialCommunityIcons
+                                name='image-plus'
+                                size={30}
+                                color={isButtonFocused ? '#5e47de' : 'white'}
+                            />
+                            <Text style={[
+                                styles.textStyle,
+                                isButtonFocused && styles.textFocused
+                            ]}>
+                                Upload Picture Or Video
+                            </Text>
+                        </TouchableOpacity>
+
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={[
+                                    styles.descriptionInput,
+                                    isDescriptionFocused && styles.descriptionInputFocused
+                                ]}
+                                placeholder="Add description..."
+                                placeholderTextColor="#666"
+                                value={description}
+                                onChangeText={setDescription}
+                                onFocus={() => setIsDescriptionFocused(true)}
+                                onBlur={() => setIsDescriptionFocused(false)}
+                                multiline
+                                numberOfLines={4}
+                                textAlignVertical="top"
+                                maxLength={200}
+                                blurOnSubmit={false}
+                                returnKeyType="done"
+                                onSubmitEditing={handleSubmitEditing}
+                            />
+                            <Text style={styles.charCount}>
+                                {description.length}/200
+                            </Text>
+                        </View>
+                        <TouchableOpacity
+                            style={[
+                                styles.submitButton,
+                                (!description.trim()) && styles.submitButtonDisabled
+                            ]}
+                            onPress={handleSubmit}
+                            disabled={!description.trim()}
+                        >
+                            <Text style={styles.submitButtonText}>
+                                Upload Post
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     );
 }
 export default AddScreen;
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'black',
+    },
+    scrollContainer: {
+        flexGrow: 1,
+        justifyContent: 'center',
+    },
     containerAdd: {
         flex: 1,
         flexDirection: 'column',
@@ -91,6 +138,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         rowGap: 20,
         paddingHorizontal: 20,
+        paddingVertical: 20,
     },
     buttonStyle: {
         width: '100%',
@@ -129,7 +177,7 @@ const styles = StyleSheet.create({
     },
     descriptionInput: {
         width: '100%',
-        minHeight: 100,
+        minHeight: 120,
         borderColor: '#333',
         borderWidth: 1,
         borderRadius: 12,
