@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import React from 'react'
 const AddScreen = () => {
     return (
@@ -11,6 +11,7 @@ export default AddScreen;
 const styles = StyleSheet.create({
     containerAdd: {
         flex: 1,
+        flexDirection: 'column',
         backgroundColor: 'black',
     }
 });

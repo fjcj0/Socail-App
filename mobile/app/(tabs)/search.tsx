@@ -3,7 +3,7 @@ import React from 'react'
 const SearchScreen = () => {
     return (
         <View style={styles.containerSearch}>
-            <Text>profile</Text>
+
         </View>
     )
 }
