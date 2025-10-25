@@ -28,3 +28,52 @@ export const stories = [
         profilePicture: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=700',
     },
 ];
+
+
+export const posts = [
+    {
+        name: 'Alice',
+        picture: require('../assets/pictures/photo1.jpg'),
+        postPicture: require('../assets/posts/1.jpg'),
+        likes: 3,
+        time: '1 hour ago',
+    },
+    {
+        name: 'Bob',
+        picture: require('../assets/pictures/photo2.jpg'),
+        postPicture: require('../assets/posts/2.jpg'),
+        likes: 1,
+        time: '30 minutes ago',
+    },
+    {
+        name: 'Charlie',
+        picture: require('../assets/pictures/photo3.jpg'),
+        postPicture: require('../assets/posts/3.jpg'),
+        likes: 5,
+        time: '1 minutes ago',
+
+    },
+    {
+        name: 'Diana',
+        picture: require('../assets/pictures/photo4.jpg'),
+        postPicture: require('../assets/posts/4.jpg'),
+        likes: 6,
+        time: '45 seconds ago',
+    },
+    {
+        name: 'Ethan',
+        picture: require('../assets/pictures/photo5.jpg'),
+        postPicture: require('../assets/posts/5.jpg'),
+        likes: 0,
+        time: 'last month',
+
+    },
+    {
+        name: 'Fiona',
+        picture: require('../assets/pictures/photo6.jpg'),
+        postPicture: require('../assets/posts/6.jpg'),
+        likes: 20,
+        time: '22 jun',
+
+    },
+];

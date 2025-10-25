@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import React from 'react';
 import HeaderHome from '@/components/HeaderHome';
-import { stories } from '@/constants/data';
+import { posts, stories } from '@/constants/data';
 import Story from '@/components/Story';
 import Welcome from '@/components/Welcome';
+import Post from '@/components/Post';
 const HomeScreen = () => {
     return (
         <View style={styles.containerHome}>
@@ -30,6 +31,17 @@ const HomeScreen = () => {
                     ))}
                 </ScrollView>
                 <Welcome />
+                <View style={styles.postsContainer}>
+                    {posts.map((post, index) => (
+                        <Post
+                            key={index}
+                            name={post.name}
+                            likes={post.likes}
+                            postPicture={post.postPicture}
+                            picture={post.picture}
+                            time={post.time} />
+                    ))}
+                </View>
             </ScrollView>
         </View>
     );
@@ -49,5 +61,9 @@ const styles = StyleSheet.create({
     storiesContentContainer: {
         paddingHorizontal: 10,
         columnGap: 16,
+    },
+    postsContainer: {
+        rowGap: 10,
+        marginTop: 5
     }
 });
