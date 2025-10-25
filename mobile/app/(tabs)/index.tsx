@@ -39,7 +39,7 @@ const HomeScreen = () => {
                             likes={post.likes}
                             postPicture={post.postPicture}
                             picture={post.picture}
-                            time={post.time} />
+                            time={post.time} description={post.description} />
                     ))}
                 </View>
             </ScrollView>

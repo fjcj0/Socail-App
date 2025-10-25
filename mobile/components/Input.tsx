@@ -1,28 +1,40 @@
 import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons';
 const Input = ({ value, setValue }: { value: any, setValue: any }) => {
+    const [isFocused, setIsFocused] = useState(false);
     const handleClear = () => {
         setValue('');
+    };
+    const handleFocus = () => {
+        setIsFocused(true);
+    };
+    const handleBlur = () => {
+        setIsFocused(false);
     };
     return (
         <View style={styles.inputStyleView}>
             <TextInput
-                style={styles.inputStyle}
+                style={[
+                    styles.inputStyle,
+                    isFocused && styles.inputStyleFocused
+                ]}
                 placeholder='Search'
-                placeholderTextColor={'#333'}
+                placeholderTextColor={'#666'}
                 value={value}
                 onChangeText={setValue}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
             />
             <View style={styles.iconContainerLeft}>
-                <Ionicons name='search' size={20} color={'white'} />
+                <Ionicons name='search' size={20} color={isFocused ? '#5e47de' : 'white'} />
             </View>
             {value &&
                 <TouchableOpacity
                     style={styles.iconContainerRight}
                     onPress={handleClear}
                 >
-                    <Ionicons name='close-circle' size={20} color={'white'} />
+                    <Ionicons name='close-circle' size={20} color={isFocused ? '#5e47de' : 'white'} />
                 </TouchableOpacity>
             }
         </View>
@@ -44,6 +56,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 35,
         paddingVertical: 10,
         color: 'white',
+        borderWidth: 1,
+        borderColor: '#131515',
+    },
+    inputStyleFocused: {
+        borderColor: '#5e47de',
+        borderWidth: 1,
     },
     iconContainerLeft: {
         position: 'absolute',

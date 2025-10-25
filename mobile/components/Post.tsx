@@ -1,19 +1,36 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 const Post = ({
     name,
     picture,
     postPicture,
     likes,
     time,
+    description = "",
 }: {
     name: string;
     picture: any;
     postPicture: any;
     likes: number;
     time: string;
+    description?: string;
 }) => {
+    const [showFullDescription, setShowFullDescription] = useState(false);
+    const MAX_DESCRIPTION_LENGTH = 100;
+    const toggleDescription = () => {
+        setShowFullDescription(!showFullDescription);
+    };
+    const displayDescription = () => {
+        if (!description) return null;
+
+        if (description.length <= MAX_DESCRIPTION_LENGTH || showFullDescription) {
+            return description;
+        }
+        return `${description.substring(0, MAX_DESCRIPTION_LENGTH)}...`;
+    };
+    const shouldShowMoreButton = description && description.length > MAX_DESCRIPTION_LENGTH;
     return (
         <View style={styles.postContainer}>
             <View style={styles.containerHeaderPost}>
@@ -51,6 +68,21 @@ const Post = ({
                     </TouchableOpacity>
                 </View>
             </View>
+            {description && (
+                <View style={styles.descriptionContainer}>
+                    <Text style={styles.descriptionText}>
+                        <Text style={styles.nameText}>{name} </Text>
+                        {displayDescription()}
+                    </Text>
+                    {shouldShowMoreButton && (
+                        <TouchableOpacity onPress={toggleDescription}>
+                            <Text style={styles.showMoreText}>
+                                {showFullDescription ? 'Show less' : 'Show more'}
+                            </Text>
+                        </TouchableOpacity>
+                    )}
+                </View>
+            )}
             <View style={styles.timeContainer}>
                 <Text style={styles.timeText}>{time}</Text>
             </View>
@@ -127,6 +159,25 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold',
         color: 'white',
+    },
+    descriptionContainer: {
+        paddingHorizontal: 10,
+        marginBottom: 5,
+    },
+    descriptionText: {
+        color: 'white',
+        fontSize: 14,
+        lineHeight: 18,
+    },
+    nameText: {
+        fontWeight: 'bold',
+        color: 'white',
+    },
+    showMoreText: {
+        color: '#888',
+        fontSize: 12,
+        marginTop: 2,
+        fontWeight: '500',
     },
     timeContainer: {
         marginTop: 5,
