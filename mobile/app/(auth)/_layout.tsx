@@ -17,7 +17,7 @@ export default function AuthRoutesLayout() {
         );
     }
     if (isSignedIn) {
-        return <Redirect href={"/(tabs)"} />;
+        return <Redirect href={"/activties/1"} />;
     }
     return (
         <Stack screenOptions={{ headerShown: false }} />

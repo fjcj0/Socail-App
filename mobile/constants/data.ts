@@ -157,3 +157,55 @@ export const userVideos = [
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4',
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4'
 ];
+
+
+export const activities = [
+    {
+        name: 'Alice',
+        profilePicture: require('../assets/pictures/photo1.jpg'),
+        post: require('../assets/posts/1.jpg'),
+        comment: true,
+        like: false,
+        date: '2 hours ago'
+    },
+    {
+        name: 'Bob',
+        profilePicture: require('../assets/pictures/photo2.jpg'),
+        post: require('../assets/posts/2.jpg'),
+        comment: false,
+        like: true,
+        date: '1 hour ago'
+    },
+    {
+        name: 'Charlie',
+        profilePicture: require('../assets/pictures/photo3.jpg'),
+        post: require('../assets/posts/3.jpg'),
+        comment: true,
+        like: true,
+        date: '45 minutes ago'
+    },
+    {
+        name: 'Diana',
+        profilePicture: require('../assets/pictures/photo4.jpg'),
+        post: require('../assets/posts/4.jpg'),
+        comment: false,
+        like: true,
+        date: '30 minutes ago'
+    },
+    {
+        name: 'Ethan',
+        profilePicture: require('../assets/pictures/photo5.jpg'),
+        post: require('../assets/posts/5.jpg'),
+        comment: true,
+        like: false,
+        date: '15 minutes ago'
+    },
+    {
+        name: 'Fiona',
+        profilePicture: require('../assets/pictures/photo6.jpg'),
+        post: require('../assets/posts/6.jpg'),
+        comment: true,
+        like: true,
+        date: 'Just now'
+    }
+];
