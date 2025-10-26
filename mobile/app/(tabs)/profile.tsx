@@ -8,11 +8,12 @@ const ProfileScreen = () => {
     const scrollX1 = useRef(new Animated.Value(0)).current;
     const scrollX2 = useRef(new Animated.Value(0)).current;
     return (
-        <View style={styles.containerProfile}>
+        <ScrollView
+            style={styles.containerProfile}
+            showsVerticalScrollIndicator={false}
+        >
             <ProfileInfo />
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={{}}
+            <View
             >
                 <View>
                     <Animated.ScrollView
@@ -58,8 +59,8 @@ const ProfileScreen = () => {
                         ))}
                     </Animated.ScrollView>
                 </View>
-            </ScrollView>
-        </View>
+            </View>
+        </ScrollView>
     );
 }
 const AnimatedUserPost = ({ image, videoUrl, index, scrollX, isVideo }: {

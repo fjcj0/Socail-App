@@ -3,7 +3,7 @@ import React from 'react';
 import { info } from '@/constants/data';
 import ValueProfile from './ValueProfile';
 import { Ionicons } from '@expo/vector-icons';
-const ProfileInfo = () => {
+const PersonProfile = () => {
     return (
         <View style={styles.containerInfo}>
             <View style={styles.containerHeaderInfo}>
@@ -35,15 +35,15 @@ const ProfileInfo = () => {
                     {'\u269B'} React Native Developer | {'\uD83D\uDCBB'} Coding enthusiast
                 </Text>
                 <TouchableOpacity
-                    style={styles.buttonEditStyle}
+                    style={styles.buttonFollowStyle}
                 >
-                    <Text style={styles.textEditStyle}>Edit Profile</Text>
+                    <Text style={styles.textFollowStyle}>Follow</Text>
                 </TouchableOpacity>
             </View>
         </View>
     );
 }
-export default ProfileInfo;
+export default PersonProfile;
 const styles = StyleSheet.create({
     containerInfo: {
         flexDirection: 'column',
@@ -108,19 +108,17 @@ const styles = StyleSheet.create({
     iconStyle: {
         color: 'black',
     },
-    buttonEditStyle: {
-        backgroundColor: '#131515',
-        width: 100,
+    buttonFollowStyle: {
+        backgroundColor: '#5e47de',
         height: 40,
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 4,
         borderWidth: 0.4,
-        borderColor: 'white'
     },
-    textEditStyle: {
+    textFollowStyle: {
         color: 'white',
-        fontWeight: 300
+        fontWeight: 500
     }
 });
