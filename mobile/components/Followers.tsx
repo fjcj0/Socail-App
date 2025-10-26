@@ -1,16 +1,8 @@
 import { View, Text, StyleSheet, ImageProps, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-const Person = ({ name, image, joined_in }: { name: string, image: ImageProps, joined_in: string }) => {
-    const handleSendRequest = () => {
-        console.log('Send friend request to:', name);
-    };
-    const router = useRouter();
+const Follower = ({ name, image, joined_in }: { name: string, image: ImageProps, joined_in: string }) => {
     return (
-        <TouchableOpacity style={styles.containerPerson} onPress={() => {
-            router.replace('/profile/2');
-        }}>
+        <TouchableOpacity style={styles.containerPerson}>
             <View style={styles.containerPicture}>
                 <Image
                     style={styles.pictureStyle}
@@ -26,16 +18,10 @@ const Person = ({ name, image, joined_in }: { name: string, image: ImageProps, j
                     Joined In: {joined_in}
                 </Text>
             </View>
-            <TouchableOpacity
-                style={styles.friendRequestButton}
-                onPress={handleSendRequest}
-            >
-                <Ionicons name="person-add" size={15} color="white" />
-            </TouchableOpacity>
         </TouchableOpacity>
     );
 }
-export default Person;
+export default Follower;
 const styles = StyleSheet.create({
     containerPerson: {
         flexDirection: 'row',

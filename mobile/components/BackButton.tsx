@@ -1,10 +1,14 @@
 import { Pressable, StyleSheet, View } from 'react-native'
 import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 const BackButton = () => {
+    const router = useRouter();
     return (
         <View style={styles.backContainer}>
-            <Pressable>
+            <Pressable onPress={() => {
+                router.push('/(tabs)');
+            }}>
                 <MaterialCommunityIcons name='arrow-left' size={20} color={'white'} />
             </Pressable>
         </View>

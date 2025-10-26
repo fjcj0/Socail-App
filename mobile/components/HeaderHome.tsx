@@ -1,8 +1,10 @@
 import { View, StyleSheet, Image, ImageProps, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 const logo: ImageProps = require('../assets/images/logo.png');
 const HeaderHome = () => {
+    const router = useRouter();
     return (
         <View style={styles.containerHeaderHome}>
             <View style={styles.containerLogo}>
@@ -13,15 +15,19 @@ const HeaderHome = () => {
                 />
             </View>
             <View style={styles.containerButtons}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    router.push('/activties/1')
+                }}>
                     <Ionicons name='heart-outline' size={28} color="white" />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    router.push('/messages/1')
+                }}>
                     <Ionicons name='paper-plane-outline' size={26} color="white" />
                 </TouchableOpacity>
             </View>
         </View>
-    )
+    );
 }
 export default HeaderHome;
 const styles = StyleSheet.create({

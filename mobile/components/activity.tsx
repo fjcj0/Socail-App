@@ -18,7 +18,7 @@ const Activity = ({ comment, like, post, date, profilePicture, name }
                     <Image
                         source={profilePicture} style={styles.imageProfilePicture} />
                     <View style={styles.iconContainer}>
-                        <MaterialCommunityIcons name={comment ? 'comment' : 'heart'} size={15}
+                        <MaterialCommunityIcons name={comment ? 'comment' : 'heart'} size={12}
                             color={'white'} style={styles.iconStyle} />
                     </View>
                 </View>
