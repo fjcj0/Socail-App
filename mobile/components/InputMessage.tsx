@@ -1,4 +1,4 @@
-import { View, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { View, StyleSheet, TextInput, TouchableOpacity, Alert, Keyboard } from 'react-native';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 interface InputMessageProps {
@@ -10,6 +10,7 @@ const InputMessage = ({ onSendMessage }: InputMessageProps) => {
         if (value.trim()) {
             onSendMessage(value);
             setValue('');
+            Keyboard.dismiss();
         }
     };
     const handleAddImage = () => {
@@ -33,6 +34,9 @@ const InputMessage = ({ onSendMessage }: InputMessageProps) => {
                         value={value}
                         multiline={true}
                         maxLength={1000}
+                        returnKeyType="send"
+                        blurOnSubmit={false}
+                        onSubmitEditing={handleSend}
                     />
                     <View style={styles.inputIcons}>
                         <TouchableOpacity style={styles.iconButton} onPress={handleAddImage}>
@@ -71,15 +75,12 @@ const InputMessage = ({ onSendMessage }: InputMessageProps) => {
 export default InputMessage;
 const styles = StyleSheet.create({
     containerInput: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        left: 0,
         paddingBottom: 20,
         paddingHorizontal: 10,
-        zIndex: 10,
         paddingTop: 10,
-        backgroundColor: '#0a0a0a',
+        backgroundColor: 'black',
+        borderTopWidth: 1,
+        borderTopColor: '#262626',
     },
     inputContainer: {
         flexDirection: 'row',

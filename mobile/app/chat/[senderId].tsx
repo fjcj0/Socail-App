@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StyleSheet, Image } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, Image, KeyboardAvoidingView, Platform } from 'react-native'
 import React, { useState, useRef, useEffect } from 'react'
 import HeaderSender from '@/components/HeaderSender';
 import InputMessage from '@/components/InputMessage';
@@ -209,14 +209,20 @@ const Chat = () => {
             setMessages(prev => [...prev, newMsg]);
         }
     };
+
     return (
-        <View style={styles.chatContainer}>
+        <KeyboardAvoidingView
+            style={styles.chatContainer}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 10 : 0}
+        >
             <HeaderSender />
             <ScrollView
                 ref={scrollViewRef}
                 style={styles.messagesContainer}
                 contentContainerStyle={styles.messagesContent}
                 showsVerticalScrollIndicator={false}
+                keyboardShouldPersistTaps="handled"
             >
                 {messages.map((message) => (
                     <View
@@ -261,19 +267,17 @@ const Chat = () => {
                 ))}
             </ScrollView>
             <InputMessage onSendMessage={handleSendMessage} />
-        </View>
+        </KeyboardAvoidingView>
     );
 }
 export default Chat;
 const styles = StyleSheet.create({
     chatContainer: {
         flex: 1,
-        backgroundColor: '#0a0a0a',
+        backgroundColor: 'black',
     },
     messagesContainer: {
         flex: 1,
-        marginBottom: 80,
-        marginTop: 70,
     },
     messagesContent: {
         paddingHorizontal: 15,
