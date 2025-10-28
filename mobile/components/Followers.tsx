@@ -1,8 +1,13 @@
 import { View, Text, StyleSheet, ImageProps, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { useRouter } from 'expo-router';
 const Follower = ({ name, image, joined_in }: { name: string, image: ImageProps, joined_in: string }) => {
+    const router = useRouter();
     return (
-        <TouchableOpacity style={styles.containerPerson}>
+        <TouchableOpacity style={styles.containerPerson}
+            onPress={() => {
+                router.push('/chat/5');
+            }}>
             <View style={styles.containerPicture}>
                 <Image
                     style={styles.pictureStyle}

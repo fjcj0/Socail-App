@@ -43,7 +43,9 @@ const Profile = () => {
                         <Animated.ScrollView
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
-                            contentContainerStyle={styles.postsUserStyle}
+                            contentContainerStyle={[styles.postsUserStyle, {
+                                paddingBottom: 50,
+                            }]}
                             onScroll={Animated.event(
                                 [{ nativeEvent: { contentOffset: { x: scrollX2 } } }],
                                 { useNativeDriver: true }
